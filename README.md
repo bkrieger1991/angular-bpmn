@@ -1,4 +1,6 @@
-#AngularJS based editor to create bpmn diagrams (and read out all the process-information)
+#AngularJS Business-Process-Modeller
+
+## AngularJS based editor to create bpmn diagrams (and read out all the process-information)
 
 ## Getting Started
 
