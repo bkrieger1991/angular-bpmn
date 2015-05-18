@@ -1,0 +1,12 @@
+{
+  "type": "component",
+  "name": "angular-bpmn",
+  "username": "bkrieger1991",
+  "ngVersion": "~1.3.0",
+  "license": "MIT",
+  "htmlPreprocessor": "jade",
+  "jsPreprocessor": "none",
+  "cssPreprocessor": "sass",
+  "module": "angular-bpmn",
+  "namespace": "ng"
+}
