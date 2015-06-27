@@ -24,8 +24,8 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
-    "ng-factory": "^1.0",
-    "undertaker-lib-tasks": "^0.3",
-    "factory-angular-channels": "^0.6"
+    "ng-factory": "~1.0",
+    "undertaker-lib-tasks": "~0.3",
+    "factory-angular-channels": "~0.6"
   }
 }
