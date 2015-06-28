@@ -1,0 +1,19 @@
+.btn-toolbar(role="toolbar", aria-label="BPMN Toolbar")
+    .btn-group(role="group", aria-label="Elements")
+        .btn.btn-default(ng-click="addSwimlane()")
+            span.glyphicon.glyphicon-align-justify
+            |&nbsp;
+            span(ng-bind-html="'toolbar.swimlane' | translate")
+        .btn.btn-default(ng-click="addActivity()")
+            span.glyphicon.glyphicon-unchecked
+            |&nbsp;
+            span(ng-bind-html="'toolbar.activity' | translate")
+        .btn.btn-default(ng-click="addGateway()")
+            span.glyphicon.glyphicon-question-sign
+            |&nbsp;
+            span(ng-bind-html="'toolbar.gateway' | translate")
+        .btn.btn-default(ng-click="addEvent()")
+            span.glyphicon.glyphicon-record
+            |&nbsp;
+            span(ng-bind-html="'toolbar.event' | translate")
+

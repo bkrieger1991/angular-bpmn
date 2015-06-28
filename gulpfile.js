@@ -2,19 +2,26 @@
 
 var gulp = require('gulp');
 var config = require('ng-factory').use(gulp);
+var karma = require('gulp-karma');
 
-//
-// Aliases
+var testFiles = ['test/*.js'];
 
-gulp.task('serve', gulp.series('ng:serve'));
+gulp.task('test', function() {
+    // Be sure to return the stream
+    return gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        }))
+        .on('error', function(err) {
+            // Make sure failed tests cause gulp to exit non-zero
+            throw err;
+        });
+});
+
 gulp.task('build', gulp.series('ng:build'));
-
-//
-// Hooks example
-
-// var path = require('path');
-// var src = config.src;
-// gulp.task('ng:afterBuild', function() {
-//   gulp.src(['bower_components/font-awesome/fonts/*.woff'], {cwd: src.cwd})
-//     .pipe(gulp.dest(path.join(src.dest, 'fonts')));
-// });
+gulp.task('serve', function () {
+    gulp.watch('src/**/*.js', gulp.series('ng:dist/scripts'));
+    gulp.watch('src/**/*.scss', gulp.series('ng:dist/styles'));
+    gulp.watch('src/**/*.jade', gulp.series('ng:dist/templates'));
+});

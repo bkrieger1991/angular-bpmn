@@ -16,16 +16,22 @@
     "type": "git",
     "url": "https://github.com/bkrieger1991/angular-bpmn.git"
   },
-   "licenses": [
+  "licenses": [
     {
       "type": "MIT"
     }
   ],
   "dependencies": {},
   "devDependencies": {
+    "factory-angular-channels": "~0.6",
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "gulp-karma": "0.0.4",
+    "install": "^0.1.8",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^0.2.2",
     "ng-factory": "~1.0",
-    "undertaker-lib-tasks": "~0.3",
-    "factory-angular-channels": "~0.6"
+    "npm": "^2.12.0",
+    "undertaker-lib-tasks": "~0.3"
   }
 }
