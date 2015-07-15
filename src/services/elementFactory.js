@@ -1,19 +1,37 @@
 'use strict';
 angular.module('angular-bpmn')
-    .factory('$bpmnElementFactory', ['bpmn.elements.swimlane', 'bpmn.elements.activity', 'bpmn.elements.event', 'bpmn.elements.gateway',
-    function(swimlane, activity, event, gateway) {
+    .factory('$bpmnElementFactory', [
+        'bpmn.elements.note', 'bpmn.elements.task',
+        'bpmn.elements.event', 'bpmn.elements.gateway',
+        'bpmn.elements.dataObject', 'bpmn.elements.storage',
+    function(
+        note, task,
+        event, gateway,
+        dataObject, storage
+    ) {
         return {
-            swimlane: function() {
-                return new swimlane();
+            task: function() {
+                return new task();
             },
-            activity: function() {
-                return new activity();
+            event: function(category, type) {
+                var e = new event();
+                e.category = category;
+                e.subType = type;
+                return e;
             },
-            event: function() {
-                return new event();
+            gateway: function(type) {
+                var gw = new gateway();
+                gw.subType = type;
+                return gw;
             },
-            gateway: function() {
-                return new gateway();
+            note: function() {
+                return new note();
+            },
+            dataObject: function() {
+                return new dataObject();
+            },
+            storage: function() {
+                return new storage();
             }
         };
     }]);

@@ -1,19 +1,27 @@
 .btn-toolbar(role="toolbar", aria-label="BPMN Toolbar")
     .btn-group(role="group", aria-label="Elements")
-        .btn.btn-default(ng-click="addSwimlane()")
+        .btn.btn-default(ng-click="main.task.add()")
             span.glyphicon.glyphicon-align-justify
             |&nbsp;
-            span(ng-bind-html="'toolbar.swimlane' | translate")
-        .btn.btn-default(ng-click="addActivity()")
+            span(ng-bind-html="'toolbar.task' | translate")
+        .btn.btn-default(ng-click="misc.note.add()")
             span.glyphicon.glyphicon-unchecked
             |&nbsp;
-            span(ng-bind-html="'toolbar.activity' | translate")
-        .btn.btn-default(ng-click="addGateway()")
+            span(ng-bind-html="'toolbar.note' | translate")
+        .btn.btn-default(ng-click="gateways.xor.add()")
             span.glyphicon.glyphicon-question-sign
             |&nbsp;
-            span(ng-bind-html="'toolbar.gateway' | translate")
-        .btn.btn-default(ng-click="addEvent()")
+            span(ng-bind-html="'toolbar.gateways.xor' | translate")
+        .btn.btn-default(ng-click="events.start.message.add()")
             span.glyphicon.glyphicon-record
             |&nbsp;
-            span(ng-bind-html="'toolbar.event' | translate")
+            span(ng-bind-html="'toolbar.events.start.messageReceived' | translate")
+        .btn.btn-default(ng-click="data.object.add()")
+            span.glyphicon.glyphicon-record
+            | &nbsp;
+            span(ng-bind-html="'toolbar.data.object' | translate")
+        .btn.btn-default(ng-click="data.storage.add()")
+            span.glyphicon.glyphicon-record
+            | &nbsp;
+            span(ng-bind-html="'toolbar.data.storage' | translate")
 

@@ -2,16 +2,28 @@
 angular.module('angular-bpmn').config(['$translateProvider', function($translateProvider) {
     $translateProvider.translations('de-de', {
         toolbar: {
-            swimlane: 'Swimlane',
-            activity: 'Aktivit&auml;t',
-            gateway: 'Entscheidung',
-            event: 'Ereignis'
+            note: 'Notiz',
+            task: 'Task (Aufgabe)',
+            gateways: {
+                xor: 'Exklusiv-Gateway'
+            },
+            events: {
+                start: {
+                    messageReceived: 'Eingehende Nachricht'
+                }
+            },
+            data: {
+                object: 'Datenobjekt',
+                storage: 'Datenspeicher'
+            }
         },
         elementPrefill: {
-            swimlane: 'Neue Simlane',
-            activity: 'Neue Aktivit&auml;t',
+            note: 'Neue Notiz',
+            task: 'Neue Aufgabe',
             gateway: 'Neue Entscheidung',
-            event: 'Neues Ereignis'
+            event: 'Neues Ereignis',
+            storage: 'Neuer Datenspeicher',
+            dataObject: 'Neues Datenobjekt'
         }
     });
 }]);

@@ -1,26 +1,27 @@
 'use strict';
 angular.module('angular-bpmn')
-    .factory('bpmn.elements.swimlane', ['$translate', function($translate) {
+    .factory('bpmn.elements.note', ['$translate', function($translate) {
         return function() {
             var object = {
                 type: 'swimlane',
-                name: ''
+                name: '',
+                text: ''
             };
 
-            $translate('elementPrefill.swimlane').then(function (text) {
+            $translate('elementPrefill.note').then(function (text) {
                 object.name = text;
             });
             return object;
         };
     }])
-    .factory('bpmn.elements.activity', ['$translate', function($translate) {
+    .factory('bpmn.elements.task', ['$translate', function($translate) {
         return function() {
             var object = {
-                type: 'activity',
+                type: 'task',
                 name: ''
             };
 
-            $translate('elementPrefill.activity').then(function (text) {
+            $translate('elementPrefill.task').then(function (text) {
                 object.name = text;
             });
             return object;
@@ -30,7 +31,9 @@ angular.module('angular-bpmn')
         return function() {
             var object = {
                 type: 'event',
-                name: ''
+                name: '',
+                category: null,
+                subType: null
             };
 
             $translate('elementPrefill.event').then(function(text) {
@@ -44,10 +47,38 @@ angular.module('angular-bpmn')
         return function() {
             var object = {
                 type: 'gateway',
-                name: ''
+                name: '',
+                subType: null
             };
 
             $translate('elementPrefill.gateway').then(function (text) {
+                object.name = text;
+            });
+            return object;
+        };
+    }])
+    .factory('bpmn.elements.dataObject', ['$translate', function($translate) {
+        return function() {
+            var object = {
+                type: 'dataObject',
+                name: ''
+            };
+
+            $translate('elementPrefill.dataObject').then(function (text) {
+                object.name = text;
+            });
+            return object;
+        };
+    }])
+    .factory('bpmn.elements.storage', ['$translate', function($translate) {
+        return function() {
+            var object = {
+                type: 'storage',
+                name: '',
+                subType: null
+            };
+
+            $translate('elementPrefill.storage').then(function (text) {
                 object.name = text;
             });
             return object;
