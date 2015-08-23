@@ -1,0 +1,16 @@
+$color-element-background: #F5F5F5;
+$color-element-text: #303030;
+$color-element-border: #121212;
+
+$color-element-background-hover: darken($color-element-background, 5);
+$color-element-text-hover: $color-element-text;
+$color-element-border-hover: #4B5923;
+
+$color-element-background-selected: #C6FF91;
+$color-element-text-selected: $color-element-text;
+$color-element-border-selected: #68D600;
+
+$color-workspace-background: #EDEDED;
+
+$color-workspace-grid-small: #CCCCCC;
+$color-workspace-grid-large: #BABABA;

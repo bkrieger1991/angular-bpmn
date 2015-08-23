@@ -1,8 +1,27 @@
 'use strict';
+var globalOrder = 1;
 var baseElement = function() {
+    var originalOrder = globalOrder;
+    var position = {
+        x: 100,
+        y: 100,
+        locked: false,
+        order: globalOrder,
+        bringToFront: function() {
+            position.order = globalOrder+1;
+        },
+        bringToBack: function() {
+            position.order = 0;
+        },
+        restoreLayer: function() {
+            position.order = originalOrder;
+        }
+    };
+    globalOrder++;
+    this.position = position;
     this.type = '';
     this.name = '';
-    this.position = {x: 100, y: 100};
+    this.connectors = [];
 };
 angular.module('angular-bpmn')
     .factory('bpmn.elements.note', ['$translate', function($translate) {

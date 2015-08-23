@@ -1,0 +1,30 @@
+@import 'colors';
+
+.element {
+  outline: none;
+  .element-content {
+    cursor: default;
+    stroke: $color-element-border;
+    fill: $color-element-background;
+    color: $color-element-text;
+    stroke-width: 1px;
+  }
+
+  &.element-moving .element-content {
+    cursor: move;
+  }
+  &:hover .element-content {
+    stroke: $color-element-border-hover;
+    fill: $color-element-background-hover;
+    color: $color-element-text-hover;
+  }
+  &.element-selected .element-content {
+    stroke: $color-element-border-selected;
+    fill: $color-element-background-selected;
+    color: $color-element-text-selected;
+  }
+
+  .element-task {
+
+  }
+}

@@ -1,0 +1,23 @@
+@import 'colors';
+.bpmn-workspace {
+  cursor: default;
+  background-color: $color-workspace-background;
+  &.workspace-movable {
+    cursor: pointer;
+  }
+  &.workspace-moving {
+    cursor: move;
+  }
+  #smallGrid {
+    path {
+      stroke: $color-workspace-grid-small;
+      stroke-width: 0.3px;
+    }
+  }
+  #grid {
+    path {
+      stroke: $color-workspace-grid-large;
+      stroke-width: 0.7px;
+    }
+  }
+}

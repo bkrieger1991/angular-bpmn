@@ -27,6 +27,7 @@
     "bootstrap": "~3.3.5",
     "angular-translate": "~2.7.2",
     "angular-sanitize": "~1.4.1",
-    "angular-mocks": "~1.4.1"
+    "angular-mocks": "~1.4.1",
+    "angular-mousewheel": "~1.0.4"
   }
 }
