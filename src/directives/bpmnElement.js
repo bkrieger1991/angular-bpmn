@@ -21,6 +21,8 @@ angular.module('angular-bpmn')
 
                 // Bind move-events.
                 var mousePositionOnElement;
+                // Used to identify a move-action and temporarily prevent selecting the element.
+                var movedDistance = {x: 0, y: 0};
                 element.bind('mousedown', function(e) {
                     if(!scope.workspace.locked && !scope.ngModel.position.locked) {
                         mousePositionOnElement = {x: e.offsetX, y: e.offsetY};
@@ -36,6 +38,8 @@ angular.module('angular-bpmn')
                     if(scope.movingEnabled) {
                         scope.ngModel.position.x += (e.offsetX - mousePositionOnElement.x) / scope.workspace.zoomFactor;
                         scope.ngModel.position.y += (e.offsetY - mousePositionOnElement.y) / scope.workspace.zoomFactor;
+                        movedDistance.x += (mousePositionOnElement.x - e.offsetX);
+                        movedDistance.y += (mousePositionOnElement.y - e.offsetY);
                         mousePositionOnElement = {x: e.offsetX, y: e.offsetY};
                         scope.$apply();
 
@@ -46,8 +50,11 @@ angular.module('angular-bpmn')
                     }
                 });
                 element.bind('click', function(e) {
-                    scope.workspace.select(scope.ngModel);
-                    scope.$apply();
+                    if(Math.abs(movedDistance.x) < 10 || Math.abs(movedDistance.y) < 10) {
+                        scope.workspace.select(scope.ngModel);
+                        scope.$apply();
+                    }
+                    movedDistance = {x: 0, y: 0};
                 });
 
                 // Compile the template.
