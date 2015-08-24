@@ -1,4 +1,7 @@
 rect.element-content.element-task(rx="5", ry="5", width="250", height="100")
 text(ng-click="inlineEditText()" x="125", ng-attr-y='{{(48 - (ngModel.name.split("\n").length*8))}}', text-anchor="middle")
     tspan(ng-repeat='line in ngModel.name.split("\n")', x="125", dy="15") {{line}}
-bpmn-connector-circle(from="ngModel", circle-position="{x: -5, y: 45}", preferredSide="left")
+g(bpmn-connector-circle, from="ngModel", circle-position="{x: -5, y: 50}", preferredSide="left")
+g(bpmn-connector-circle, from="ngModel", circle-position="{x: 255, y: 50}", preferredSide="left")
+g(bpmn-connector-circle, from="ngModel", circle-position="{x: 125, y: -5}", preferredSide="left")
+g(bpmn-connector-circle, from="ngModel", circle-position="{x: 125, y: 105}", preferredSide="left")

@@ -19,16 +19,30 @@ angular.module('angular-bpmn')
                 var tmpl = $templateCache.get('views/elements/' + scope.ngModel.type + '.html');
                 element.html(tmpl);
 
+                // Compile the template.
+                $compile(element.contents())(scope);
+
+                var isConnector = function(element) {
+                    return element.nodeName === 'circle' && _.contains(element.classList, 'connector-circle')
+                };
+
                 // Bind move-events.
                 var mousePositionOnElement;
                 // Used to identify a move-action and temporarily prevent selecting the element.
                 var movedDistance = {x: 0, y: 0};
                 element.bind('mousedown', function(e) {
-                    if(!scope.workspace.locked && !scope.ngModel.position.locked) {
-                        mousePositionOnElement = {x: e.offsetX, y: e.offsetY};
-                        scope.movingEnabled = true;
-                        scope.ngModel.position.bringToFront();
+                    // Disable element-moving when mouse hovers a "circle.element-connector".
+                    if(isConnector(e.target)) {
+                        return;
                     }
+                    // Check workspace- or element-lock
+                    if(scope.workspace.locked || scope.ngModel.position.locked) {
+                        return;
+                    }
+
+                    mousePositionOnElement = {x: e.offsetX, y: e.offsetY};
+                    scope.movingEnabled = true;
+                    scope.ngModel.position.bringToFront();
                 });
                 element.bind('mouseup', function(e) {
                     scope.movingEnabled = false;
@@ -50,15 +64,16 @@ angular.module('angular-bpmn')
                     }
                 });
                 element.bind('click', function(e) {
+                    console.log(e.target);
+                    if(isConnector(e.target)) {
+                        return;
+                    }
                     if(Math.abs(movedDistance.x) < 10 || Math.abs(movedDistance.y) < 10) {
                         scope.workspace.select(scope.ngModel);
                         scope.$apply();
                     }
                     movedDistance = {x: 0, y: 0};
                 });
-
-                // Compile the template.
-                $compile(element.contents())(scope);
             }
         };
     }]);

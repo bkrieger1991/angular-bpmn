@@ -2,8 +2,7 @@
 angular.module('angular-bpmn')
     .directive('bpmnConnectorCircle', ['$bpmnWorkspace', function($workspace) {
         return {
-            restrict: 'E',
-            replace: true,
+            restrict: 'A',
             template: '<circle r="10" ng-attr-cx="{{circlePosition.x}}" ng-attr-cy="{{circlePosition.y}}" class="connector-circle"></circle>',
             scope: {
                 circlePosition: '=',
@@ -16,14 +15,13 @@ angular.module('angular-bpmn')
                 };
                 scope.from.connectors.push(connectorData);
 
-                scope.linkTo = function($event) {
-                    console.log('Linking: ', $event);
-                };
-                scope.newConnection = function($event) {
-                    console.log('initializing new connection: ', $event);
-                    $workspace.virtualitor({x: $event.x, y: $event.y});
-                };
-                console.log('Connector ready!');
+                element.bind('mousedown', function() {
+                    console.log('start linking...');
+                });
+
+                element.bind('mouseup', function() {
+                    console.log('maybe incoming link?');
+                });
             }
         };
     }]);

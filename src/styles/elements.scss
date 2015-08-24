@@ -1,29 +1,42 @@
 @import 'colors';
 
 .element {
+  /* Base-Settings */
   outline: none;
   .element-content {
     cursor: default;
-    stroke: $color-element-border;
-    fill: $color-element-background;
+    stroke: $color-element-stroke;
+    fill: $color-element-fill;
     color: $color-element-text;
     stroke-width: 1px;
+    &:hover {
+      stroke: $color-element-stroke-hover;
+      fill: $color-element-fill-hover;
+      color: $color-element-text-hover;
+    }
   }
-
   &.element-moving .element-content {
     cursor: move;
   }
-  &:hover .element-content {
-    stroke: $color-element-border-hover;
-    fill: $color-element-background-hover;
-    color: $color-element-text-hover;
-  }
   &.element-selected .element-content {
-    stroke: $color-element-border-selected;
-    fill: $color-element-background-selected;
+    stroke: $color-element-stroke-selected;
+    fill: $color-element-fill-selected;
     color: $color-element-text-selected;
   }
+  &:hover .connector-circle {
+      display:block;
+  }
+  .connector-circle {
+    display:none;
+    stroke: $color-connector-circle-stroke;
+    fill: $color-connector-circle-fill;
+    &:hover {
+      stroke: $color-connector-circle-hover-stroke;
+      fill: $color-connector-circle-hover-fill;
+    }
+  }
 
+  /* Different element definitions */
   .element-task {
 
   }
