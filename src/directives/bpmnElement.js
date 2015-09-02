@@ -64,11 +64,10 @@ angular.module('angular-bpmn')
                     }
                 });
                 element.bind('click', function(e) {
-                    console.log(e.target);
                     if(isConnector(e.target)) {
                         return;
                     }
-                    if(Math.abs(movedDistance.x) < 10 || Math.abs(movedDistance.y) < 10) {
+                    if(Math.abs(movedDistance.x) < 5 && Math.abs(movedDistance.y) < 5) {
                         scope.workspace.select(scope.ngModel);
                         scope.$apply();
                     }

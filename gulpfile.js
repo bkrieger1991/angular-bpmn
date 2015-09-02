@@ -20,8 +20,11 @@ gulp.task('test', function() {
 });
 
 gulp.task('build', gulp.series('ng:build'));
-gulp.task('serve', function () {
+
+gulp.task('watch', function () {
     gulp.watch('src/**/*.js', gulp.series('ng:dist/scripts'));
     gulp.watch('src/**/*.scss', gulp.series('ng:dist/styles'));
     gulp.watch('src/**/*.jade', gulp.series('ng:dist/templates'));
 });
+
+gulp.task('default', ['build', 'watch']);

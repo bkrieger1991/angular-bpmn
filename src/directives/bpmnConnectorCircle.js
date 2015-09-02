@@ -15,12 +15,8 @@ angular.module('angular-bpmn')
                 };
                 scope.from.connectors.push(connectorData);
 
-                element.bind('mousedown', function() {
-                    console.log('start linking...');
-                });
-
-                element.bind('mouseup', function() {
-                    console.log('maybe incoming link?');
+                element.bind('click', function() {
+                    $workspace.handleConnectorClick(scope.from, connectorData);
                 });
             }
         };

@@ -46,7 +46,7 @@ angular.module('angular-bpmn')
             scope.stopDrag = function() {
                 scope.dragging = false;
             };
-            scope.drag = function($event) {
+            scope.move = function($event) {
                 if(scope.dragging) {
                     scope.workspacePosition.x += ($event.offsetX - dragMousePosition.x) / scope.workspace.zoomFactor;
                     scope.workspacePosition.y += ($event.offsetY - dragMousePosition.y) / scope.workspace.zoomFactor;
@@ -56,6 +56,10 @@ angular.module('angular-bpmn')
                     if($event.preventDefault) $event.preventDefault();
                     $event.cancelBubble=true;
                     $event.returnValue=false;
+                }
+                if($workspace.connecting) {
+                    $workspace.virtualConnectorPositions.to.x = $event.offsetX;
+                    $workspace.virtualConnectorPositions.to.y = $event.offsetY;
                 }
             };
         }

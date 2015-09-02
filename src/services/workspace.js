@@ -5,10 +5,10 @@ angular.module('angular-bpmn')
         this.elements = [];
         this.swimlanes = [];
         this.zoomFactor = 1;
+        this.virtualConnectorPositions = {from: {x: 0, y: 0}, to: {x: 0, y: 0}};
+        this.connecting = false;
         this.movingEnabled = true;
         this.locked = false;
-        this.virtualConnectorEnabled = false;
-        this.virtualConnectorStartPosition = null;
         this.add = function(element) {
             var id = $utils.newid();
             element.id = id;
@@ -56,8 +56,14 @@ angular.module('angular-bpmn')
         this.getSelected = function() {
             return this.get(this.selectedElementId);
         };
-        this.virtualizeConnector = function(fromPosition) {
-            this.virtualConnectorEnabled = true;
-            this.virtualConnectorStartPosition = fromPosition;
+        this.handleConnectorClick = function(element, connector) {
+            if(this.connecting) {
+                console.log('maybe incoming link?', element, connector);
+                this.connecting = false;
+            } else {
+                console.log('start linking...', element, connector);
+                this.connecting = true;
+                this.virtualConnectorPositions.from = connector.position;
+            }
         };
     }]);

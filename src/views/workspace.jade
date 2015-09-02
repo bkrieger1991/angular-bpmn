@@ -1,5 +1,5 @@
-.bpmn-workspace(ng-class="{'workspace-movable': workspace.movingEnabled, 'workspace-moving': dragging}")
-    svg(width="100%", height="100%", msd-wheel="changeZoom($event, $delta)", ng-mousedown="beginDrag($event)" ng-mouseup="stopDrag()" ng-mousemove="drag($event)")
+.bpmn-workspace(ng-class="{'workspace-movable': workspace.movingEnabled, 'workspace-moving': dragging, 'workspace-connecting': workspace.connecting}")
+    svg(width="100%", height="100%", msd-wheel="changeZoom($event, $delta)", ng-mousedown="beginDrag($event)" ng-mouseup="stopDrag()" ng-mousemove="move($event)")
         defs
             pattern#smallGrid(patternUnits="userSpaceOnUse", width="8", height="8")
                 path(d="M 8 0 L 0 0 0 8", fill="none")
@@ -7,5 +7,11 @@
                 rect(fill="url(#smallGrid)", width="80", height="80")
                 path(d="M 80 0 L 0 0 0 80", fill="none")
         rect#workspace-grid(width="100%", height="100%", fill="url(#grid)", ng-click="workspace.removeSelection()")
+        line.virtual-connector-line(
+            ng-attr-x1='{{workspace.virtualConnectorPositions.from.x}}',
+            ng-attr-y1='{{workspace.virtualConnectorPositions.from.y}}',
+            ng-attr-x2='{{workspace.virtualConnectorPositions.to.x}}',
+            ng-attr-y2='{{workspace.virtualConnectorPositions.to.y}}'
+        )
         g(ng-attr-transform="scale({{workspace.zoomFactor}}) translate({{workspacePosition.x}}, {{workspacePosition.y}})")
             bpmn-element(ng-repeat="e in workspace.elements track by $index | orderBy: e.position.order" ng-model="e")
